@@ -1,0 +1,41 @@
+group 'dropwizard_ex'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile){
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    maven { url "http://oss.sonatype.org/content/repositories/snapshots" }
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: '1.2.0-SNAPSHOT'
+    compile group: 'io.dropwizard', name: 'dropwizard-auth', version: '1.2.0-SNAPSHOT'
+    compile group: 'io.dropwizard', name: 'dropwizard-assets', version: '1.2.0-SNAPSHOT'
+    compile group: 'io.dropwizard', name: 'dropwizard-http2', version: '1.2.0-SNAPSHOT'
+    compile group: 'io.dropwizard', name: 'dropwizard-hibernate', version: '1.2.0-SNAPSHOT'
+    compile group: 'io.dropwizard', name: 'dropwizard-migrations', version: '1.2.0-SNAPSHOT'
+    compile group: 'io.dropwizard', name: 'dropwizard-views-freemarker', version: '1.2.0-SNAPSHOT'
+    compile group: 'io.dropwizard', name: 'dropwizard-views-mustache', version: '1.2.0-SNAPSHOT'
+    compile group: 'io.dropwizard', name: 'dropwizard-metrics-graphite', version: '1.2.0-SNAPSHOT'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.194'
+    testCompile group: 'io.dropwizard', name: 'dropwizard-testing', version: '1.2.0-SNAPSHOT'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.22'
+    testCompile(group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-inmemory', version: '2.25.1') {
+        exclude(module: 'javax.servlet-api')
+        exclude(module: 'junit')
+    }
+    testCompile(group: 'org.glassfish.jersey.test-framework.providers', name: 'jersey-test-framework-provider-grizzly2', version: '2.25.1') {
+        exclude(module: 'javax.servlet-api')
+        exclude(module: 'junit')
+    }
+
+}
